@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @planvital %>
+
+<div>
+  <%= link_to "Edit this planvital", edit_planvital_path(@planvital) %> |
+  <%= link_to "Back to planvitals", planvitals_path %>
+
+  <%= button_to "Destroy this planvital", @planvital, method: :delete %>
+</div>

@@ -1,0 +1,2 @@
+class Planvital < ApplicationRecord
+end

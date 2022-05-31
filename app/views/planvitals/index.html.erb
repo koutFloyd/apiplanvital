@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>AFP Plan vital</h1>
+
+<table class="table table-striped">
+  <thead >
+    <tr>
+      <th>Fecha</th>
+      <th>fondo A</th>
+      <th>V%A</th>
+      <th>fundo E</th>
+      <th>V%E</th>
+      <th>A-E</th>
+    </tr>
+  </thead>
+
+
+<div id="planvitals">
+    
+ <%a=0%>
+ <%e=0%>
+  <% @planvitals["quotaValues"].each do |planvital| %>
+ 
+  
+  <tr>
+    <td><%= planvital["date"].to_date  %></td>
+    <td><%= planvital["fundA"] %></td>
+    <td><%= ((planvital["fundA"]/a-1)*100).round(2)   %></td>
+    <td><%= planvital["fundE"]  %></td>
+    <td><%= ((planvital["fundE"]/e-1)*100).round(2)   %></td>
+    <td><%= (planvital["fundA"]-planvital["fundE"]).round(2)  %></td>
+  </tr>
+  <% a = planvital["fundA"]  %>
+  <% e = planvital["fundE"]  %>
+  <% end %>
+  </table>
+  <%= link_to "New planvital", new_planvital_path %>
+
+</div>
+
+
