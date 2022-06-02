@@ -9,7 +9,7 @@ class PlanvitalsController < ApplicationController
     
     response = RestClient::Request.new(
       :method => :get,
-      :url => "https://api2.planvital.cl/public/financial-indicators/quota-values?startDate=2022-05-17&endDate=2023-05-30",
+      :url => "https://api2.planvital.cl/public/financial-indicators/quota-values?startDate=2022-05-17&endDate=2022-06-30",
       :verify_ssl => false
     ).execute
     @planvitals = JSON.parse(response.to_str)
