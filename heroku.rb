@@ -1,6 +1,6 @@
 
 #system("git commit -m \"commit message link dissable\"")
-#system("git commit -a")
+system("git push origin master")
 #system("db:migrate")
 system("heroku login")
 #system("horoku create")
