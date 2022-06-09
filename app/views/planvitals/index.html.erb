@@ -1,13 +1,26 @@
+<%
+    def format_number(number)
+      whole, decimal = number.to_s.split(".")
+      num_groups = whole.chars.to_a.reverse.each_slice(3)
+      whole_with_commas = num_groups.map(&:join).join('.').reverse
+      "$  " + [whole_with_commas, decimal].compact.join(",")
+    end
+%>
+
 <p style="color: green"><%= notice %></p>
 
 <h1>AFP Plan vital</h1>
+
+<h1>Cuadro Resúmen</h1>
 
 <table class="table table-striped">
   <thead >
     <tr>
       <th>Fecha</th>
-      <th>fondo A</th>
+      <th>Fondo A</th>
       <th>V%A</th>
+      <th>Fondo C</th>
+      <th>V%C</th>
       <th>Fondo E</th>
       <th>V%E</th>
       <th>A-E</th>
@@ -18,19 +31,28 @@
 <div id="planvitals">
     
  <%a=0%>
+ <%c=0%>
  <%e=0%>
   <% @planvitals["quotaValues"].each do |planvital| %>
- 
+  <%
+
+    va= planvital["fundA"]
+    vc= planvital["fundC"]
+    ve= planvital["fundE"]
+  %>
   
   <tr>
     <td><%= planvital["date"].to_date  %></td>
-    <td><%= planvital["fundA"] %></td>
-    <td><%= ((planvital["fundA"]/a-1)*100).round(2)   %></td>
-    <td><%= planvital["fundE"]  %></td>
-    <td><%= ((planvital["fundE"]/e-1)*100).round(2)   %></td>
-    <td><%= (planvital["fundA"]-planvital["fundE"]).round(2)  %></td>
+    <td><%= format_number(va) %></td>
+    <td><%= ((planvital["fundA"]/a-1)*100).round(2)%></td>
+    <td>$<%= planvital["fundC"]  %></td>
+    <td><%= ((planvital["fundC"]/c-1)*100).round(2)%></td>
+    <td>$<%= planvital["fundE"]  %></td>
+    <td><%= ((planvital["fundE"]/e-1)*100).round(2)%></td>
+    <td>$<%= (planvital["fundA"]-planvital["fundE"]).round(2)  %></td>
   </tr>
   <% a = planvital["fundA"]  %>
+  <% c = planvital["fundC"]  %>
   <% e = planvital["fundE"]  %>
   <% end %>
   </table>

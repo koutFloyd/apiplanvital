@@ -78,4 +78,6 @@ class PlanvitalsController < ApplicationController
     def planvital_params
       params.require(:planvital).permit(:date, :fundA, :fundC, :fundE)
     end
+    
+
 end
