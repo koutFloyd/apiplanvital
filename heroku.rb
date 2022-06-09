@@ -11,7 +11,7 @@ system("git push origin master")
 puts "running comandos DataBase..."
 #system("db:migrate")
 
-puts "running comandos hiroku..."
+puts "running comandos heroku..."
 puts "4.- running command heroku login"
 system("heroku login")
 #system("horoku create")
