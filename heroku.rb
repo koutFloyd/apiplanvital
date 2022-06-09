@@ -4,7 +4,7 @@ puts "running comandos gitHub..."
 puts "1.- running command git add ."
 system("git add .")
 puts "2.- running command git commit -m 'commit message'"
-system("git commit -m 'commit #{t.strftime("%d/%m/%Y %H:%M:%S")}'")
+system("git commit -m \"subida #{t.strftime("%d/%m/%Y %H:%M:%S")}\"")
 puts "3.- running command git push origin master"
 system("git push origin master")
 

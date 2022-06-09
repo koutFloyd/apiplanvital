@@ -11,7 +11,7 @@
 
 <h1>AFP Plan vital</h1>
 
-<h1>Cuadro Resúmen</h1>
+<h1>Cuadro Resúmen <%=number_to_currency(1234567890.506, precision: 2)  %></h1>
 
 <table class="table table-striped">
   <thead >
@@ -39,21 +39,22 @@
     va= planvital["fundA"]
     vc= planvital["fundC"]
     ve= planvital["fundE"]
+    difAE = (va.to_f - ve.to_f).round(2)
   %>
   
   <tr>
     <td><%= planvital["date"].to_date  %></td>
-    <td><%= format_number(va) %></td>
-    <td><%= ((planvital["fundA"]/a-1)*100).round(2)%></td>
-    <td>$<%= planvital["fundC"]  %></td>
-    <td><%= ((planvital["fundC"]/c-1)*100).round(2)%></td>
-    <td>$<%= planvital["fundE"]  %></td>
-    <td><%= ((planvital["fundE"]/e-1)*100).round(2)%></td>
-    <td>$<%= (planvital["fundA"]-planvital["fundE"]).round(2)  %></td>
+    <td><%= number_to_currency(va, unit: "$ ") %></td>
+    <td><%= number_to_percentage((va/a-1)*100, precision: 2,format: "%n %")%></td>
+    <td><%= number_to_currency(vc, unit: "$ ")  %></td>
+    <td><%= number_to_percentage((vc/c-1)*100, precision: 2,format: "%n %")%></td>
+    <td><%= number_to_currency(ve, unit: "$ ")  %></td>
+    <td><%= number_to_percentage((ve/e-1)*100, precision: 2,format: "%n %")%></td>
+    <td><%= number_to_currency(difAE, unit: "$ ")  %></td>
   </tr>
-  <% a = planvital["fundA"]  %>
-  <% c = planvital["fundC"]  %>
-  <% e = planvital["fundE"]  %>
+  <% a = va  %>
+  <% c = vc %>
+  <% e = ve  %>
   <% end %>
   </table>
   
