@@ -39,6 +39,7 @@
 <table class="table table-striped">
   <thead >
     <tr>
+      <th>#</th>
       <th>Fecha</th>
       <th>Fondo A</th>
       <th>V%A</th>
@@ -56,6 +57,8 @@
  <% a = 1 %>
  <% c = 1 %>
  <% e = 1 %>
+ <% n = 1 %>
+
   <% @pager.each do |planvital| %>
   <%
 
@@ -66,6 +69,7 @@
   %>
   
   <tr>
+    <td><%= n  %></td>
     <td><%= planvital["date"].to_date  %></td>
     <td><%= number_to_currency(va, unit: "$ ") %></td>
     <td><%= number_to_percentage((va/a-1)*100, precision: 2,format: "%n %")%></td>
@@ -78,6 +82,8 @@
   <% a = va  %>
   <% c = vc  %>
   <% e = ve  %>
+  <% n = n + 1  %>
+
   <% end %>
   </table>
   
