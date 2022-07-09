@@ -9,13 +9,17 @@ class PlanvitalsController < ApplicationController
     
     response = RestClient::Request.new(
       :method => :get,
-      :url => "https://api2.planvital.cl/public/financial-indicators/quota-values?startDate=2022-05-17&endDate=2022-06-30",
+      :url => "https://api2.planvital.cl/public/financial-indicators/quota-values?startDate=2022-05-17&endDate=2023-07-30",
       :verify_ssl => false
     ).execute
     @planvitals = JSON.parse(response.to_str)
+    @pager = Kaminari.paginate_array(@planvitals["quotaValues"]).page(params[:page]).per(20)
 
+  
 
   end
+  
+
 
   # GET /planvitals/1 or /planvitals/1.json
   def show
