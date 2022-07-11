@@ -82,6 +82,7 @@ gem "sassc-rails"
 
 gem "rest-client"
 gem "kaminari"
+gem "devise"
 
 gem "ruby-debug-ide", require: false
 gem "debase", require: false
