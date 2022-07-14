@@ -76,6 +76,7 @@ group :production do
     gem "pg"
 end
 
+gem "aws-sdk-s3"
 # GReenDucK_cl: requisitos para activar bootstrap
 gem "bootstrap"
 gem "sassc-rails"
