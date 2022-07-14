@@ -28,7 +28,13 @@
                 <%= link_to "Plan Vital", planvitals_path,class: "nav-link" %>
               <% end %>
             </li>
+           
             <li class="nav-item">
+              <% if user_signed_in? %>
+                <%= link_to "Spensiones", spensiones_index_path, class: "nav-link" %>
+              <% end %>
+            </li>
+             <li class="nav-item">
               <% if user_signed_in? %>
                 <%= link_to "Salir", destroy_user_session_path, data: {"turbo-method": :delete},  class: "nav-link" %>
               <% else %>
@@ -36,7 +42,6 @@
               <% end %>
             </li>
           </ul>
-         
         </div>
       </div>
     </nav>

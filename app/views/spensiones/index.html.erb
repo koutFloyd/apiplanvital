@@ -1,0 +1,45 @@
+
+<h1>Cuadro Resúmen x AFP</h1>
+<table class="table table-striped ">
+  <thead >
+    <tr>
+      <th>Fecha</th>
+      <th>CAPITAL</th>
+      <th>CUPRUM</th>
+      <th>HABITAT</th>
+      <th>MODELO</th>
+      <th>PLANVITAL</th>
+      <th>PROVIDA</th>
+      <th>UNO</th>
+    </tr>
+  </thead>
+
+<% if @data.count > 0 %>
+
+
+<%  i=0 %>
+
+<%@csv_file_path.each_line do |line|%>
+    <% splited = line.split(';') %>
+        <%if i >  4 %>
+            <tr>
+                <td><%= splited[0]  %></td>
+                <td><%= splited[1]  %></td>
+                <td><%= splited[3]  %></td>
+                <td><%= splited[5]  %></td>
+                <td><%= splited[7]  %></td>
+                <td><%= splited[9]  %></td>
+                <td><%= splited[11]  %></td>
+                <td><%= splited[13]  %></td>
+            </tr>
+        <%end%> 
+        <% i=i+1 %>
+<%end%> 
+
+
+</table>
+
+
+<%else%>
+<h1>No hay resultados para la búsqueda </h1>
+<%end%>
