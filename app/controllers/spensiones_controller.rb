@@ -2,7 +2,7 @@ class SpensionesController < ApplicationController
   def index
     response = RestClient::Request.new(
       :method => :get,
-      :url => "https://www.spensiones.cl/apps/valoresCuotaFondo/vcfAFPxls.php?aaaaini=2022&aaaafin=2022&tf=A&fecconf=20230630",
+      :url => "https://www.spensiones.cl/apps/valoresCuotaFondo/vcfAFPxls.php?aaaaini=2022&aaaafin=2024&tf=A&fecconf=20230630",
       :verify_ssl => false
     ).execute
     @data = response.to_str.gsub!("\r\n", ';').split(';').split('Valores Provisorios - Sujetos a Confirmacion')[0]
